@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Ticket Booking</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+        <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #a69cf1;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .navbar {
+            display: inline-block;
+            float: right;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            background: url('hero.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+        }
+
+        .movie-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .movie-item {
+            text-align: center;
+            width: 200px;
+        }
+
+        .movie-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .movie-item h3 {
+            font-size: 1.2rem;
+            margin: 10px 0 5px;
+        }
+
+        .movie-item p {
+            margin: 5px 0;
+        }
+
+        .movie-item button {
+            padding: 8px 15px;
+            background-color: #f39c12;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .movie-item button:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">BookMyMovie</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#movies">Movies</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html" class="btn">Login</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 style="text-align: center; color: #333;">Experience the Best Movies in Town</h2>
+                <p style="text-align: center; color: #333;">Book your tickets easily and enjoy exclusive offers!</p>
+                <a href="#movies" class="btn">Book Now</a>
+            </div>
+        </section>
+
+        <section id="movies" class="movies">
+            <div class="container">
+                <h1>Latest Releases</h1>
+                <h4>Now Showing</h4>
+                <div class="movie-grid">
+                    <div class="movie-item">
+                        <img src="movie1.jpg" alt="Movie 1">
+                        <h3>Pirates of the Caribbean: Dead Men Tell No Tales</h3>
+                        <p>Genre: Adventure</p>
+                        <button class="book-ticket-btn" data-movie="Pirates of the Caribbean: Dead Men Tell No Tales">Book Ticket</button>
+                    </div>
+                    <div class="movie-item">
+                        <img src="movie2.jpg" alt="Movie 2">
+                        <h3>Pushpa 2: The Rule</h3>
+                        <p>Genre: Thriller</p>
+                        <button class="book-ticket-btn" data-movie="Pushpa 2: The Rule">Book Ticket</button>
+                    </div>
+                    <div class="movie-item">
+                        <img src="movie3.jpg" alt="Movie 3">
+                        <h3>Amaran</h3>
+                        <p>Genre: Action</p>
+                        <button class="book-ticket-btn" data-movie="Amaran">Book Ticket</button>
+                    </div>
+                    <div class="movie-item">
+                        <img src="movie4.jpg" alt="Movie 4">
+                        <h3>Dune: Part Two</h3>
+                        <p>Genre: Sci-fi</p>
+                        <button class="book-ticket-btn" data-movie="Dune: Part Two">Book Ticket</button>
+                    </div>
+                    <div class="movie-item">
+                        <img src="movie5.jpg" alt="Movie 5">
+                        <h3>Bhool Bhulaiyaa 3</h3>
+                        <p>Genre: Horror</p>
+                        <button class="book-ticket-btn" data-movie="Bhool Bhulaiyaa 3">Book Ticket</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BookMyMovie. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for "Book Ticket" Buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookTicketButtons = document.querySelectorAll('.book-ticket-btn');
+
+            bookTicketButtons.forEach(button => {
+                button.addEventListener('click', event => {
+                    const movieTitle = button.getAttribute('data-movie');
+                    alert(`You are booking tickets for: ${movieTitle}`);
+                    // Redirect to booking page
+                    window.location.href = `booking.html?movie=${encodeURIComponent(movieTitle)}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

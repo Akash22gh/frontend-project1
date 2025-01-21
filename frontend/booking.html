@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #selectedMovie {
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        .success-message {
+            display: none;
+            color: #28a745;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Your Booking</h1>
+        <p id="selectedMovie"></p>
+        <button class="btn" id="paymentBtn">Make Payment</button>
+        <p class="success-message" id="successMessage">Payment Successful! Enjoy your movie.</p>
+    </div>
+
+    <script>
+        // Retrieve the movie name from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedMovie = urlParams.get('movie');
+
+        // Display the selected movie title
+        const selectedMovieElement = document.getElementById('selectedMovie');
+        if (selectedMovie) {
+            selectedMovieElement.textContent = `You are booking tickets for: ${selectedMovie}`;
+        } else {
+            selectedMovieElement.textContent = "No movie selected.";
+        }
+
+        // Payment button click event
+        const paymentBtn = document.getElementById('paymentBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        paymentBtn.addEventListener('click', () => {
+            // Display the success message
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 3000); // 3 seconds
+        });
+    </script>
+</body>
+</html>
